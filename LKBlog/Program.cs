@@ -12,6 +12,7 @@ builder.Services.AddDbContext<LKBlogDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("LKBlogDbConnectionString")));
 
 builder.Services.AddScoped<ITagRepository, TagRepository>();
+builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
 
 var app = builder.Build();
 

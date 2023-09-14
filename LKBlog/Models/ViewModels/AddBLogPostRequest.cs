@@ -1,20 +1,10 @@
-﻿using Azure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LKBlog.Models.Domain;
-using LKBlog.Models.ViewModels;
-using LKBlog.Repositories;
-using Microsoft.AspNetCore.Mvc;
+﻿using LKBlog.Models.Domain;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-
-namespace LKBlog.Models.Domain
+namespace LKBlog.Models.ViewModels
 {
-    public class BlogPost
+    public class AddBLogPostRequest
     {
-        public Guid Id { get; set; }
         public string Heading { get; set; }
         public string PageTitle { get; set; }
         public string Content { get; set; }
@@ -25,7 +15,11 @@ namespace LKBlog.Models.Domain
         public string Author { get; set; }
         public bool Visible { get; set; }
 
-        public ICollection<Tag> Tags { get; set; }
+
+        //Display tags
+        public IEnumerable<SelectListItem> Tags { get; set; }
+        //Collect Tag
+        public string[] SelectedTags { get; set; } = Array.Empty<string>();
 
     }
 }
