@@ -67,12 +67,13 @@ namespace LKBlog.Controllers
             return RedirectToAction("Add");
         }
 
-        //[HttpGet]
-       // public async Task<IActionResult> List()
-                //{
+        [HttpGet]
+        public async Task<IActionResult> List()
+                {
 
-                //call repository to get all blog posts
-                   // return View();
-                //}
+            //call repository to get all blog posts
+            var blogPosts = await blogPostRepository.GetAllAsync();
+                    return View(blogPosts);
+                }
     }
 }

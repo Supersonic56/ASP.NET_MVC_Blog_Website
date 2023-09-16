@@ -1,5 +1,6 @@
 ﻿using LKBlog.Data;
 using LKBlog.Models.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace LKBlog.Repositories
 {
@@ -24,9 +25,9 @@ namespace LKBlog.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<BlogPost>> GetAllAsync()
+        public async Task<IEnumerable<BlogPost>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await lKBlogDbContext.BlogPost.Include(x => x.Tags).ToListAsync();
         }
 
         public Task<BlogPost?> GetAsync(Guid id)
